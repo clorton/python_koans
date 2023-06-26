@@ -17,8 +17,16 @@
 #   about_triangle_project_2.py
 #
 def triangle(a, b, c):
-    # DELETE 'PASS' AND WRITE THIS CODE
-    pass
+    
+    if any(map(lambda l: l <= 0, [a, b, c])):
+        raise TriangleError
+    
+    d, e, f = list(sorted([a, b, c]))
+    if (d + e <= f):
+        raise TriangleError
+
+    type = {3: "scalene", 2: "isosceles", 1: "equilateral"}
+    return type[len(set([a, b, c]))]
 
 # Error class used in part 2.  No need to change this code.
 class TriangleError(Exception):
